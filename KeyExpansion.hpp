@@ -2,7 +2,7 @@
 
 // -Notice that the value of the left most byte 
 //  in polynomial form is Rcon[i] == 2^i.
-byte Rcon[] =
+const byte Rcon[] =
 { 0x01000000,
 	0x02000000,
 	0x04000000,
