@@ -1,24 +1,25 @@
 // KeyExpansion routine headers.
+#include"AESOperation.hpp"
 
 // -Notice that the value of the left most byte 
 //  in polynomial form is Rcon[i] == 2^i.
-const byte Rcon[] =
-{ 0x01000000,
-	0x02000000,
-	0x04000000,
-  0x08000000,
-  0x10000000,
-	0x20000000,
-	0x40000000,
-	0x80000000,
-	0x1B000000,
-	0x36000000 };
-
-// -Standard rotation of bits to the left.
-ui32 RotLeft(ui32 word, byte n);
+const byte Rcon[][4] =
+{ {0x01, 0x00, 0x00, 0x00},
+  {0x02, 0x00, 0x00, 0x00},
+  {0x04, 0x00, 0x00, 0x00},
+  {0x08, 0x00, 0x00, 0x00},
+  {0x10, 0x00, 0x00, 0x00},
+  {0x20, 0x00, 0x00, 0x00},
+  {0x40, 0x00, 0x00, 0x00},
+  {0x80, 0x00, 0x00, 0x00},
+  {0x1B, 0x00, 0x00, 0x00},
+  {0x36, 0x00, 0x00, 0x00} };
 
 // -Rotation of bytes to the left.
-ui32 RotWord(ui32 word, byte n);
+void RotWord(byte word[4]);
 
-// -SubWord transformation.
-ui32 SubWord(ui32 word, byte n);
+// -Apply SBox to each byte of the word.
+void SubWord(byte word[4]);
+
+// -Actual implementation of KeyExpansion routine.
+void KeyExpansion(byte key[], byte Nk = 4,  byte destination[], byte AESTYPE = AES128);
