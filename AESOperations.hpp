@@ -30,3 +30,6 @@ void ShiftRows(byte state[16]);
 
 // -Mixes the data within each column of the state array.
 void MixColumns(byte state[16]);
+
+// -Combines a round key with the state.
+void AddRoundKey(byte state[16]; byte w[], byte round);

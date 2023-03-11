@@ -25,3 +25,9 @@ void MixColumns(byte state[16]) {
 		for(j = 0; j < 4; j++)
 			state[4*i + j] ^= a[(j - i + 4) % 4];
 }
+
+// -Combines a round key with the state.
+void AddRoundKey(byte state[16]; byte w[], byte round) {
+	for(int i = 0; i < 16; i++)
+		state[i] ^= w[4*round + i & 3];
+}
