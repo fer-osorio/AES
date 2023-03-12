@@ -1,4 +1,4 @@
-#include"AESOperations.hpp"
+#include"Cipher.hpp"
 
 // -Applies a substitution table (S-box) to each byte.
 void SubBytes(byte state[16]) {
@@ -31,3 +31,37 @@ void AddRoundKey(byte state[16]; byte w[], byte round) {
 	for(int i = 0; i < 16; i++)
 		state[i] ^= w[4*round + i & 3];
 }
+
+// -Cipher routine.
+void Cipher(byte in[16],byte w[], byte Nr) {
+	byte i;
+	AddRoundKey(in, w, 0);
+	for(i = 0; i < Nr; i++) {
+		SubBytes(in);
+		ShiftRows(in);
+		MixColumns(in);
+		AddRoundKey(in, w, round);
+	}
+	SubBytes(in);
+	ShiftRows(in);
+	AddRoundKey(in, w, round);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

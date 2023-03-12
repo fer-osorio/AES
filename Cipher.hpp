@@ -1,9 +1,6 @@
 typedef unsigned char byte;
 typedef unsigned int  ui32;
 
-// -Global variable; contains the length of the key in words of 32 bits
-//  and will determine the algorithm (AES-128, AES-192, AES-256) selected.
-
 const byte SBox[] =
 { 0x63, 0x7C, 0x77, 0x7B, 0xF2, 0x6B, 0x6F, 0xC5, 0x30, 0x01, 0x67, 0x2B, 0xFE, 0xD7, 0xAB, 0x76,
   0xCA, 0x82, 0xC9, 0x7D, 0xFA, 0x59, 0x47, 0xF0, 0xAD, 0xD4, 0xA2, 0xAF, 0x9C, 0xA4, 0x72, 0xC0,
@@ -32,4 +29,7 @@ void ShiftRows(byte state[16]);
 void MixColumns(byte state[16]);
 
 // -Combines a round key with the state.
-void AddRoundKey(byte state[16]; byte w[], byte round);
+void AddRoundKey(byte state[16], byte w[], byte round);
+
+// -Cipher routine.
+void Cipher(byte in[16],byte w[], byte Nr);
