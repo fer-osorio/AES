@@ -3,16 +3,6 @@
 #include<iostream>
 #include"KeyExpansion.hpp"
 
-void print(const byte word[4]) {
-	std::cout << '[';
-	for(int i = 0; i < 4; i++) {
-		printf("%X", word[i]);
-		if(i != 3)
-			std::cout << ", ";
-	}
-	std::cout << ']';
-}
-
 // -Coping an array of 4 bytes.
 void CopyWord(const byte word[4], byte copy[4]) {
 	for(int i = 0; i < 4; i++)
@@ -52,27 +42,28 @@ void KeyExpansion(byte key[], byte Nk, byte w[]) {
 		// -Guarding agains modify things that we
 		//  don't want to modify.
 		CopyWord(&(w[4*(i - 1)]), temp);
-		std::cout << " temp = ";
-		print(temp);
+		// -Debuggin porpuses.
+		// std::cout << " temp = ";
+		// printWord(temp);
 		// -i is a multiple of Nk.
 		if(i % Nk == 0) {
 			RotWord(temp);
-			std::cout << " Rot = ";
-			print(temp);
+			//std::cout << " Rot = ";
+			//printWord(temp);
 			SubWord(temp);
-			std::cout << " RotSub = ";
-			print(temp);
+			//std::cout << " RotSub = ";
+			//printWord(temp);
 			XORword(temp, Rcon[i/Nk -1], temp);
-			std::cout << " Rcon[i/Nk] = ";
-			print(Rcon[i/Nk - 1]);
-			std::cout << " RotSubXor = ";
-			print(temp);
+			//std::cout << " Rcon[i/Nk] = ";
+			//printWord(Rcon[i/Nk - 1]);
+			//std::cout << " RotSubXor = ";
+			//printWord(temp);
 		}
 		if(Nk == 8 && i % Nk == 4) {
 			SubWord(temp);
 		}
 		XORword(&(w[4*(i - Nk)]), temp, &(w[4*i]));
-		std::cout << '\n';
+		//std::cout << '\n';
 	}
 }
 

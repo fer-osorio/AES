@@ -15,8 +15,6 @@ const byte Rcon[][4] =
   {0x1B, 0x00, 0x00, 0x00},
   {0x36, 0x00, 0x00, 0x00} };
 
-void print(const byte word[4]);
-
 // -Coping an array of 4 bytes.
 void CopyWord(const byte word[4], byte copy[4]);
 

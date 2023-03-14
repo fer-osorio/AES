@@ -34,3 +34,4 @@
 # Some auxiliary programs
 OperationsGF256.cpp
 SubBytes.cpp
+GF256.cpp
